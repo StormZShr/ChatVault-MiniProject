@@ -6,4 +6,4 @@ services:
       POSTGRES_PASSWORD: 5520
       POSTGRES_DB: chatvault
     ports:
-      - "5432:5432"
+      - "5433:5432"
