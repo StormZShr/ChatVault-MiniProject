@@ -114,7 +114,6 @@ for tab, cat in zip([tab1, tab2, tab3], ["notes", "information", "funny"]):
                 unsafe_allow_html=True
             )
         else:
-            # 3 column media grid
             cols = st.columns(3)
             for i, item in enumerate(media_items):
                 with cols[i % 3]:
