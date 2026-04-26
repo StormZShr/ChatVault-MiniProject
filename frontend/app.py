@@ -122,7 +122,6 @@ for tab, cat in zip([tab1, tab2, tab3], ["notes", "information", "funny"]):
                     filename = item["filename"]
                     uploader = item["uploader"]
 
-                    # detect video vs image by extension
                     if any(filename.lower().endswith(ext) for ext in [".mp4", ".mov", ".avi"]):
                         st.video(url)
                     else:
@@ -130,8 +129,7 @@ for tab, cat in zip([tab1, tab2, tab3], ["notes", "information", "funny"]):
 
                     st.caption(f"📁 {filename}")
                     st.caption(f"👤 {uploader}")
-
-                    # Delete button
+                    
                     if st.button("🗑️ Delete", key=f"del_{item['id']}"):
                         requests.delete(f"{API}/media/{item['id']}")
                         st.rerun()
