@@ -50,7 +50,7 @@ export default function Sidebar({ onUploadSuccess }) {
   };
 
   return (
-    <aside className="w-72 bg-vault-surface border-r border-vault-border p-6 flex flex-col gap-6 min-h-screen">
+    <aside className="w-72 bg-vault-surface/60 backdrop-blur-xl border-r border-vault-border/50 p-6 flex flex-col gap-6 min-h-screen sticky top-[73px] h-[calc(100vh-73px)] overflow-y-auto">
       <div>
         <h2 className="font-mono text-vault-gold font-bold text-sm uppercase tracking-widest mb-4">
           Upload Media

@@ -12,7 +12,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-vault-surface border-b border-vault-border px-6 py-4 flex justify-between items-center">
+    <nav className="sticky top-0 z-50 bg-vault-surface/80 backdrop-blur-md border-b border-vault-border/50 px-6 py-4 flex justify-between items-center shadow-lg shadow-black/20">
       <div>
         <h1 className="font-display text-2xl text-vault-gold">🗄️ ChatVault</h1>
         <p className="text-vault-muted text-xs font-mono">Your class media, organised.</p>
