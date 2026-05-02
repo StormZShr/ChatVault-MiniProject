@@ -10,13 +10,10 @@ const CATEGORY_LABELS = {
   funny: "😂 Funny Media"
 };
 
-// 1. We receive searchQuery as a prop from Vault.jsx
 export default function MediaGrid({ refreshTrigger, searchQuery }) {
   const [activeTab, setActiveTab] = useState("notes");
   const [media, setMedia] = useState({});
   const [loading, setLoading] = useState(false);
-
-  // Note: The local 'search' state that used to be here has been deleted.
 
   const fetchMedia = async (cat) => {
     setLoading(true);
@@ -41,7 +38,6 @@ export default function MediaGrid({ refreshTrigger, searchQuery }) {
     }));
   };
 
-  // 2. The filter logic now uses 'searchQuery' instead of the old 'search' state
   const filtered = (media[activeTab] || []).filter(item =>
     !searchQuery ||
     item.filename.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -55,7 +51,6 @@ export default function MediaGrid({ refreshTrigger, searchQuery }) {
         {CATEGORIES.map(cat => (
           <button
             key={cat}
-            // Note: Removed the setSearch("") reset from onClick since the state moved
             onClick={() => setActiveTab(cat)} 
             className={`px-4 py-2 font-mono text-sm transition-colors border-b-2 -mb-px
               ${activeTab === cat
@@ -68,14 +63,11 @@ export default function MediaGrid({ refreshTrigger, searchQuery }) {
         ))}
       </div>
 
-      {/* Note: The old <input> field that was sitting here has been completely deleted. */}
-
       {/* Grid */}
       {loading ? (
         <p className="text-vault-muted font-mono text-sm">Loading...</p>
       ) : filtered.length === 0 ? (
         <div className="text-center py-20 text-vault-muted font-mono text-sm">
-          {/* 3. Updated empty state message to reflect searchQuery */}
           {searchQuery ? `🔎 No results for "${searchQuery}"` : "📭 Nothing here yet. Upload something!"}
         </div>
       ) : (
@@ -86,7 +78,6 @@ export default function MediaGrid({ refreshTrigger, searchQuery }) {
             </p>
           )}
           
-          {/* Animated Grid using Framer Motion */}
           <motion.div layout className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {filtered.map((item, i) => (
               <motion.div

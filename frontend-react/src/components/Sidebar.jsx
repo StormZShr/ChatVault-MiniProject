@@ -3,15 +3,8 @@ import { useDropzone } from "react-dropzone";
 import { Upload } from "lucide-react";
 import client from "../api/client";
 
-const CATEGORIES = ["notes", "information", "funny"];
-const CATEGORY_LABELS = {
-  notes: "📒 Notes",
-  information: "ℹ️ Information",
-  funny: "😂 Funny Media"
-};
-
 export default function Sidebar({ onUploadSuccess }) {
-  const [category, setCategory] = useState("notes");
+  // 1. Notice the category state is completely gone
   const [files, setFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
   const [message, setMessage] = useState(null);
@@ -36,12 +29,16 @@ export default function Sidebar({ onUploadSuccess }) {
       for (const file of files) {
         const form = new FormData();
         form.append("files", file);
-        form.append("category", category);
-        await client.post("/upload", form);
+        // 2. We no longer append a category here!
+
+        await client.post("/upload", form, {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+        });
       }
-      setMessage({ type: "success", text: `✅ ${files.length} file(s) uploaded!` });
+      
+      setMessage({ type: "success", text: `✅ ${files.length} file(s) auto-categorized!` });
       setFiles([]);
-      onUploadSuccess(category);
+      onUploadSuccess(); 
     } catch (err) {
       setMessage({ type: "error", text: "Upload failed. Try again." });
     } finally {
@@ -50,23 +47,14 @@ export default function Sidebar({ onUploadSuccess }) {
   };
 
   return (
-    <aside className="w-72 bg-vault-surface/60 backdrop-blur-xl border-r border-vault-border/50 p-6 flex flex-col gap-6 min-h-screen sticky top-[73px] h-[calc(100vh-73px)] overflow-y-auto">
+    // Preserved our floating, bordered sidebar aesthetic
+    <aside className="w-72 bg-vault-surface border border-vault-border/80 rounded-xl ml-6 my-6 p-6 flex flex-col gap-6 sticky top-[calc(73px+24px)] h-[calc(100vh-73px-48px)] overflow-y-auto shadow-sm">
       <div>
-        <h2 className="font-mono text-vault-gold font-bold text-sm uppercase tracking-widest mb-4">
+        <h2 className="font-mono text-vault-gold font-bold text-sm uppercase tracking-widest mb-6">
           Upload Media
         </h2>
 
-        {/* Category selector */}
-        <label className="text-vault-muted text-xs font-mono mb-1 block">Category</label>
-        <select
-          value={category}
-          onChange={e => setCategory(e.target.value)}
-          className="w-full bg-vault-bg border border-vault-border rounded px-3 py-2 text-vault-text font-mono text-sm mb-4 focus:outline-none focus:border-vault-gold"
-        >
-          {CATEGORIES.map(cat => (
-            <option key={cat} value={cat}>{CATEGORY_LABELS[cat]}</option>
-          ))}
-        </select>
+        {/* 3. The <select> dropdown that was here has been completely deleted */}
 
         {/* Dropzone */}
         <div
@@ -105,7 +93,7 @@ export default function Sidebar({ onUploadSuccess }) {
           disabled={uploading || !files.length}
           className="w-full bg-vault-gold text-vault-bg font-mono font-bold py-2 rounded hover:bg-vault-goldHover transition-colors disabled:opacity-40"
         >
-          {uploading ? "Uploading..." : "Upload"}
+          {uploading ? "Analyzing & Sorting..." : "Upload"}
         </button>
 
         {/* Message */}

@@ -9,6 +9,7 @@ from imagekit_utils import upload_file, delete_file
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from auth import hash_password, verify_password, create_token, decode_token
 from jose import JWTError
+from ai_utils import categorize_image
 
 Base.metadata.create_all(bind=engine)
 
@@ -49,33 +50,40 @@ def get_media(category: str, db: Session = Depends(get_db)):
 @app.post("/upload")
 async def upload_media(
     files: List[UploadFile] = File(...),
-    category: str = Form(...),
+    # DELETED: category: str = Form(...)
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db)
 ):
-    if category not in CATEGORIES:
-        raise HTTPException(status_code=400, detail="Invalid category")
-
     uploaded = []
     for file in files:
         contents = await file.read()
-
+        
         if len(contents) > MAX_FILE_SIZE:
             raise HTTPException(status_code=400, detail=f"{file.filename} exceeds 10MB limit")
-
-        url, file_id = upload_file(contents, file.filename, category)
-
+            
+        # --- The AI Integration ---
+        # Only run AI on images. If someone uploads a video, default to 'funny' (or a new category if you prefer)
+        if file.content_type and file.content_type.startswith('image/'):
+            auto_category = categorize_image(contents)
+        else:
+            auto_category = "funny" 
+            
+        # Upload to ImageKit using the AI-detected category
+        url, file_id = upload_file(contents, file.filename, auto_category)
+        
         record = Media(
             filename=file.filename,
-            category=category,
+            category=auto_category, 
             media_url=url,
             file_id=file_id,
-            uploader=current_user.username
+            uploader=current_user.username,
+            uploader_id=current_user.id # Assuming you added this earlier
         )
         db.add(record)
         db.commit()
-        uploaded.append({"filename": file.filename, "url": url})
-
+        
+        uploaded.append({"filename": file.filename, "url": url, "category": auto_category})
+        
     return {"uploaded": uploaded}
 
 @app.delete("/media/{id}")
