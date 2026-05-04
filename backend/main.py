@@ -18,9 +18,10 @@ app = FastAPI(title="ChatVault API")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="login")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["*"],
     allow_methods=["*"],
-    allow_headers=["*"]
+    allow_headers=["*"],
+    allow_credentials = True
 )
 
 CATEGORIES = ["notes", "information", "funny"]
