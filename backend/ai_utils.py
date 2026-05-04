@@ -16,8 +16,8 @@ def categorize_image(file_bytes: bytes) -> str:
         You are an automated file sorter. Categorize this image into one of three buckets:
         1. notes (handwritten text, whiteboards, notebook pages, study materials)
         2. information (announcements, schedules, charts, generic screenshots)
-        3. funny (memes, jokes, casual photos of friends)
-        
+        3. funny (memes, jokes)
+        4. memories(causal photos of friend or with friends)
         Respond with exactly ONE word from the list above. No punctuation, no explanation.
         """
         response = client.models.generate_content(
@@ -32,6 +32,8 @@ def categorize_image(file_bytes: bytes) -> str:
             return "notes"
         elif "funny" in result:
             return "funny"
+        elif "photos" in result:
+            return "memories"
         else:
             return "information"
             
