@@ -28,26 +28,26 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-vault-bg">
-      <div className="bg-vault-surface border border-vault-border rounded-lg p-8 w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-vault-bg transition-colors">
+      <div className="bg-white dark:bg-vault-surface border border-slate-200 dark:border-vault-border rounded-lg p-8 w-full max-w-md shadow-sm dark:shadow-none">
 
-        <h1 className="font-display text-4xl text-vault-gold mb-2">🗄️ ChatVault</h1>
-        <p className="text-vault-muted text-sm mb-8">Your class media, organised.</p>
+        <h1 className="font-display text-4xl text-sky-500 dark:text-vault-gold mb-2">🗄️ ChatVault</h1>
+        <p className="text-slate-500 dark:text-vault-muted text-sm mb-8">Your class media, organised.</p>
 
-        <h2 className="font-mono text-vault-text text-lg mb-6">Register</h2>
+        <h2 className="font-mono text-slate-800 dark:text-vault-text text-lg mb-6">Register</h2>
 
-        {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
-        {success && <p className="text-green-400 text-sm mb-4">Registered! Redirecting...</p>}
+        {error && <p className="text-red-500 dark:text-red-400 text-sm mb-4">{error}</p>}
+        {success && <p className="text-green-500 dark:text-green-400 text-sm mb-4">Registered! Redirecting...</p>}
 
         <input
-          className="w-full bg-vault-bg border border-vault-border rounded px-4 py-2 mb-4 text-vault-text font-mono text-sm focus:outline-none focus:border-vault-gold"
+          className="w-full bg-slate-50 dark:bg-vault-bg border border-slate-200 dark:border-vault-border rounded px-4 py-2 mb-4 text-slate-800 dark:text-vault-text font-mono text-sm focus:outline-none focus:border-sky-500 dark:focus:border-vault-gold transition-colors"
           placeholder="Choose a username"
           value={username}
           onChange={e => setUsername(e.target.value)}
         />
         <input
           type="password"
-          className="w-full bg-vault-bg border border-vault-border rounded px-4 py-2 mb-6 text-vault-text font-mono text-sm focus:outline-none focus:border-vault-gold"
+          className="w-full bg-slate-50 dark:bg-vault-bg border border-slate-200 dark:border-vault-border rounded px-4 py-2 mb-6 text-slate-800 dark:text-vault-text font-mono text-sm focus:outline-none focus:border-sky-500 dark:focus:border-vault-gold transition-colors"
           placeholder="Choose a password"
           value={password}
           onChange={e => setPassword(e.target.value)}
@@ -57,14 +57,14 @@ export default function Register() {
         <button
           onClick={handleRegister}
           disabled={loading}
-          className="w-full bg-vault-gold text-vault-bg font-mono font-bold py-2 rounded hover:bg-vault-goldHover transition-colors disabled:opacity-50"
+          className="w-full bg-sky-500 dark:bg-vault-gold text-white dark:text-vault-bg font-mono font-bold py-2 rounded hover:bg-sky-600 dark:hover:bg-vault-goldHover transition-colors disabled:opacity-50"
         >
           {loading ? "Registering..." : "Register"}
         </button>
 
-        <p className="text-vault-muted text-sm mt-4 text-center">
+        <p className="text-slate-500 dark:text-vault-muted text-sm mt-4 text-center">
           Already have an account?{" "}
-          <Link to="/login" className="text-vault-gold hover:underline">Login</Link>
+          <Link to="/login" className="text-sky-500 dark:text-vault-gold hover:underline">Login</Link>
         </p>
       </div>
     </div>

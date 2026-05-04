@@ -29,25 +29,25 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-vault-bg">
-      <div className="bg-vault-surface border border-vault-border rounded-lg p-8 w-full max-w-md">
+    <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-vault-bg transition-colors">
+      <div className="bg-white dark:bg-vault-surface border border-slate-200 dark:border-vault-border rounded-lg p-8 w-full max-w-md shadow-sm dark:shadow-none">
 
-        <h1 className="font-display text-4xl text-vault-gold mb-2">🗄️ ChatVault</h1>
-        <p className="text-vault-muted text-sm mb-8">Your class media, organised.</p>
+        <h1 className="font-display text-4xl text-sky-500 dark:text-vault-gold mb-2">🗄️ ChatVault</h1>
+        <p className="text-slate-500 dark:text-vault-muted text-sm mb-8">Your class media, organised.</p>
 
-        <h2 className="font-mono text-vault-text text-lg mb-6">Login</h2>
+        <h2 className="font-mono text-slate-800 dark:text-vault-text text-lg mb-6">Login</h2>
 
-        {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
+        {error && <p className="text-red-500 dark:text-red-400 text-sm mb-4">{error}</p>}
 
         <input
-          className="w-full bg-vault-bg border border-vault-border rounded px-4 py-2 mb-4 text-vault-text font-mono text-sm focus:outline-none focus:border-vault-gold"
+          className="w-full bg-slate-50 dark:bg-vault-bg border border-slate-200 dark:border-vault-border rounded px-4 py-2 mb-4 text-slate-800 dark:text-vault-text font-mono text-sm focus:outline-none focus:border-sky-500 dark:focus:border-vault-gold transition-colors"
           placeholder="Username"
           value={username}
           onChange={e => setUsername(e.target.value)}
         />
         <input
           type="password"
-          className="w-full bg-vault-bg border border-vault-border rounded px-4 py-2 mb-6 text-vault-text font-mono text-sm focus:outline-none focus:border-vault-gold"
+          className="w-full bg-slate-50 dark:bg-vault-bg border border-slate-200 dark:border-vault-border rounded px-4 py-2 mb-6 text-slate-800 dark:text-vault-text font-mono text-sm focus:outline-none focus:border-sky-500 dark:focus:border-vault-gold transition-colors"
           placeholder="Password"
           value={password}
           onChange={e => setPassword(e.target.value)}
@@ -57,14 +57,14 @@ export default function Login() {
         <button
           onClick={handleLogin}
           disabled={loading}
-          className="w-full bg-vault-gold text-vault-bg font-mono font-bold py-2 rounded hover:bg-vault-goldHover transition-colors disabled:opacity-50"
+          className="w-full bg-sky-500 dark:bg-vault-gold text-white dark:text-vault-bg font-mono font-bold py-2 rounded hover:bg-sky-600 dark:hover:bg-vault-goldHover transition-colors disabled:opacity-50"
         >
           {loading ? "Logging in..." : "Login"}
         </button>
 
-        <p className="text-vault-muted text-sm mt-4 text-center">
+        <p className="text-slate-500 dark:text-vault-muted text-sm mt-4 text-center">
           No account?{" "}
-          <Link to="/register" className="text-vault-gold hover:underline">Register</Link>
+          <Link to="/register" className="text-sky-500 dark:text-vault-gold hover:underline">Register</Link>
         </p>
       </div>
     </div>

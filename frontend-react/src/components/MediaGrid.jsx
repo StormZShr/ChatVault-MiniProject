@@ -47,15 +47,15 @@ export default function MediaGrid({ refreshTrigger, searchQuery }) {
   return (
     <div className="flex-1 p-6">
       {/* Tabs */}
-      <div className="flex gap-1 mb-6 border-b border-vault-border">
+      <div className="flex gap-1 mb-6 border-b border-slate-200 dark:border-vault-border transition-colors">
         {CATEGORIES.map(cat => (
           <button
             key={cat}
             onClick={() => setActiveTab(cat)} 
             className={`px-4 py-2 font-mono text-sm transition-colors border-b-2 -mb-px
               ${activeTab === cat
-                ? "border-vault-gold text-vault-gold"
-                : "border-transparent text-vault-muted hover:text-vault-text"
+                ? "border-sky-500 text-sky-500 dark:border-vault-gold dark:text-vault-gold"
+                : "border-transparent text-slate-500 dark:text-vault-muted hover:text-slate-800 dark:hover:text-vault-text"
               }`}
           >
             {CATEGORY_LABELS[cat]}
@@ -65,15 +65,15 @@ export default function MediaGrid({ refreshTrigger, searchQuery }) {
 
       {/* Grid */}
       {loading ? (
-        <p className="text-vault-muted font-mono text-sm">Loading...</p>
+        <p className="text-slate-500 dark:text-vault-muted font-mono text-sm">Loading...</p>
       ) : filtered.length === 0 ? (
-        <div className="text-center py-20 text-vault-muted font-mono text-sm">
+        <div className="text-center py-20 text-slate-500 dark:text-vault-muted font-mono text-sm">
           {searchQuery ? `🔎 No results for "${searchQuery}"` : "📭 Nothing here yet. Upload something!"}
         </div>
       ) : (
         <>
           {searchQuery && (
-            <p className="text-vault-muted text-xs font-mono mb-4">
+            <p className="text-slate-500 dark:text-vault-muted text-xs font-mono mb-4">
               {filtered.length} result(s) for "{searchQuery}"
             </p>
           )}
