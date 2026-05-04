@@ -47,7 +47,7 @@ export default function Sidebar({ onUploadSuccess }) {
   return (
     <aside className="w-72 bg-white dark:bg-vault-surface border border-slate-200 dark:border-vault-border/80 rounded-xl ml-6 my-6 p-6 flex flex-col gap-6 sticky top-[calc(73px+24px)] h-[calc(100vh-73px-48px)] overflow-y-auto shadow-sm transition-colors">
       <div>
-        <h2 className="font-mono text-sky-500 dark:text-vault-gold font-bold text-sm uppercase tracking-widest mb-6">
+        <h2 className="font-mono text-purple-500 dark:text-vault-gold font-bold text-sm uppercase tracking-widest mb-6">
           Upload Media
         </h2>
 
@@ -56,14 +56,14 @@ export default function Sidebar({ onUploadSuccess }) {
           {...getRootProps()}
           className={`border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-colors mb-4
             ${isDragActive
-              ? "border-sky-500 bg-sky-50 dark:border-vault-gold dark:bg-vault-gold/10"
-              : "border-slate-300 dark:border-vault-border hover:border-sky-500 dark:hover:border-vault-gold"
+              ? "border-purple-500 bg-sky-50 dark:border-vault-gold dark:bg-vault-gold/10"
+              : "border-slate-300 dark:border-vault-border hover:border-purple-500 dark:hover:border-vault-gold"
             }`}
         >
           <input {...getInputProps()} />
           <Upload size={24} className="mx-auto text-slate-400 dark:text-vault-muted mb-2" />
           {files.length > 0 ? (
-            <p className="text-sky-500 dark:text-vault-gold text-xs font-mono">{files.length} file(s) selected</p>
+            <p className="text-purple-500 dark:text-vault-gold text-xs font-mono">{files.length} file(s) selected</p>
           ) : (
             <p className="text-slate-500 dark:text-vault-muted text-xs font-mono">
               {isDragActive ? "Drop here..." : "Drag & drop or click to select"}
@@ -86,7 +86,7 @@ export default function Sidebar({ onUploadSuccess }) {
         <button
           onClick={handleUpload}
           disabled={uploading || !files.length}
-          className="w-full bg-sky-500 dark:bg-vault-gold text-white dark:text-vault-bg font-mono font-bold py-2 rounded hover:bg-sky-600 dark:hover:bg-vault-goldHover transition-colors disabled:opacity-40"
+          className="w-full bg-purple-500 dark:bg-vault-gold text-white dark:text-vault-bg font-mono font-bold py-2 rounded hover:bg-sky-600 dark:hover:bg-vault-goldHover transition-colors disabled:opacity-40"
         >
           {uploading ? "Analyzing & Sorting..." : "Upload"}
         </button>

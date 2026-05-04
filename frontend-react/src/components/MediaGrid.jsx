@@ -54,7 +54,7 @@ export default function MediaGrid({ refreshTrigger, searchQuery }) {
             onClick={() => setActiveTab(cat)} 
             className={`px-4 py-2 font-mono text-sm transition-colors border-b-2 -mb-px
               ${activeTab === cat
-                ? "border-sky-500 text-sky-500 dark:border-vault-gold dark:text-vault-gold"
+                ? "border-purple-500 text-purple-500 dark:border-vault-gold dark:text-vault-gold"
                 : "border-transparent text-slate-500 dark:text-vault-muted hover:text-slate-800 dark:hover:text-vault-text"
               }`}
           >

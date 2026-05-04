@@ -23,7 +23,7 @@ export default function MediaCard({ item, onDelete }) {
   };
 
   return (
-    <div className="bg-white dark:bg-vault-surface border border-slate-200 dark:border-vault-border rounded-lg overflow-hidden hover:border-sky-500 dark:hover:border-vault-gold transition-colors group shadow-sm dark:shadow-none">
+    <div className="bg-white dark:bg-vault-surface border border-slate-200 dark:border-vault-border rounded-lg overflow-hidden hover:border-purple-500 dark:hover:border-vault-gold transition-colors group shadow-sm dark:shadow-none">
 
       {/* Media Preview */}
       <div className="aspect-square bg-slate-50 dark:bg-vault-bg flex items-center justify-center overflow-hidden transition-colors">
@@ -47,7 +47,7 @@ export default function MediaCard({ item, onDelete }) {
         <div className="flex gap-2 mt-3">
           <button
             onClick={handleDownload}
-            className="flex-1 flex items-center justify-center gap-1 bg-slate-100 dark:bg-vault-border text-slate-800 dark:text-vault-text py-1.5 rounded text-xs font-mono hover:bg-sky-500 hover:text-white dark:hover:bg-vault-gold dark:hover:text-vault-bg transition-colors"
+            className="flex-1 flex items-center justify-center gap-1 bg-slate-100 dark:bg-vault-border text-slate-800 dark:text-vault-text py-1.5 rounded text-xs font-mono hover:bg-purple-500 hover:text-white dark:hover:bg-vault-gold dark:hover:text-vault-bg transition-colors"
           >
             <Download size={12} /> Download
           </button>

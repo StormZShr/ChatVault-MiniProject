@@ -16,7 +16,7 @@ export default function About() {
       
       <div className="flex-1 max-w-7xl mx-auto w-full p-8 mt-8">
         <div className="bg-white dark:bg-vault-surface border border-slate-200 dark:border-vault-border rounded-xl p-8 shadow-sm">
-          <h1 className="font-display text-4xl text-sky-500 dark:text-vault-gold mb-2">About ChatVault</h1>
+          <h1 className="font-display text-4xl text-purple-500 dark:text-vault-gold mb-2">About ChatVault</h1>
           <p className="text-slate-500 dark:text-vault-muted font-mono text-sm mb-8">
             Built to solve the "Buried in the group chat" problem.
           </p>
@@ -40,7 +40,7 @@ export default function About() {
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {techStack.map((tech) => (
                   <div key={tech.name} className="bg-slate-50 dark:bg-vault-bg border border-slate-200 dark:border-vault-border rounded p-4 flex flex-col gap-2 transition-colors">
-                    <div className="text-sky-500 dark:text-vault-gold">{tech.icon}</div>
+                    <div className="text-purple-500 dark:text-vault-gold">{tech.icon}</div>
                     <span className="text-slate-800 dark:text-vault-text font-mono text-sm">{tech.name}</span>
                     <span className="text-slate-500 dark:text-vault-muted font-mono text-xs">{tech.desc}</span>
                   </div>
@@ -54,19 +54,19 @@ export default function About() {
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="bg-slate-50 dark:bg-vault-bg border border-slate-200 dark:border-vault-border rounded px-6 py-3 transition-colors">
-                  <span className="text-sky-500 dark:text-vault-gold font-mono text-sm block mb-1">Backend Developer</span>
+                  <span className="text-purple-500 dark:text-vault-gold font-mono text-sm block mb-1">Backend Developer</span>
                   <span className="text-slate-800 dark:text-vault-text font-mono text-sm">Syed Sohrab Haider Rizvi</span>
                 </div>
                 <div className="bg-slate-50 dark:bg-vault-bg border border-slate-200 dark:border-vault-border rounded px-6 py-3 transition-colors">
-                  <span className="text-sky-500 dark:text-vault-gold font-mono text-sm block mb-1">Frontend Developer</span>
+                  <span className="text-purple-500 dark:text-vault-gold font-mono text-sm block mb-1">Frontend Developer</span>
                   <span className="text-slate-800 dark:text-vault-text font-mono text-sm">Anshika Mishra</span>
                 </div>
                 <div className="bg-slate-50 dark:bg-vault-bg border border-slate-200 dark:border-vault-border rounded px-6 py-3 transition-colors">
-                  <span className="text-sky-500 dark:text-vault-gold font-mono text-sm block mb-1">Database Architect</span>
+                  <span className="text-purple-500 dark:text-vault-gold font-mono text-sm block mb-1">Database Architect</span>
                   <span className="text-slate-800 dark:text-vault-text font-mono text-sm">Simran Mishra</span>
                 </div>
                 <div className="bg-slate-50 dark:bg-vault-bg border border-slate-200 dark:border-vault-border rounded px-6 py-3 transition-colors">
-                  <span className="text-sky-500 dark:text-vault-gold font-mono text-sm block mb-1">UI Developer</span>
+                  <span className="text-purple-500 dark:text-vault-gold font-mono text-sm block mb-1">UI Developer</span>
                   <span className="text-slate-800 dark:text-vault-text font-mono text-sm">Ali Siddique</span>
                 </div>
               </div>
@@ -77,7 +77,7 @@ export default function About() {
                 href="https://github.com/StormZShr/ChatVault-MiniProject" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-slate-500 dark:text-vault-muted hover:text-sky-500 dark:hover:text-vault-gold font-mono text-sm transition-colors"
+                className="flex items-center gap-2 text-slate-500 dark:text-vault-muted hover:text-purple-500 dark:hover:text-vault-gold font-mono text-sm transition-colors"
               >
                 <Code size={16} /> View Source Code
               </a>

@@ -18,7 +18,7 @@ export default function Navbar({ searchQuery, setSearchQuery }) {
       
       <div className="w-64 shrink-0"> 
         <Link to="/">
-          <h1 className="font-display text-2xl text-sky-500 dark:text-vault-gold hover:text-sky-600 dark:hover:text-vault-goldHover transition-colors">🗄️ ChatVault</h1>
+          <h1 className="font-display text-2xl text-purple-500 dark:text-vault-gold hover:text-sky-600 dark:hover:text-vault-goldHover transition-colors">🗄️ ChatVault</h1>
         </Link>
         <p className="text-slate-500 dark:text-vault-muted text-xs font-mono">Your class media, organised.</p>
       </div>
@@ -34,7 +34,7 @@ export default function Navbar({ searchQuery, setSearchQuery }) {
               value={searchQuery || ""}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by filename or uploader..."
-              className="w-full bg-slate-100 dark:bg-vault-bg/50 border border-slate-200 dark:border-vault-border rounded-lg pl-10 pr-4 py-2 text-slate-800 dark:text-vault-text font-mono text-sm focus:outline-none focus:border-sky-500 dark:focus:border-vault-gold focus:bg-white dark:focus:bg-vault-bg transition-colors"
+              className="w-full bg-slate-100 dark:bg-vault-bg/50 border border-slate-200 dark:border-vault-border rounded-lg pl-10 pr-4 py-2 text-slate-800 dark:text-vault-text font-mono text-sm focus:outline-none focus:border-purple-500 dark:focus:border-vault-gold focus:bg-white dark:focus:bg-vault-bg transition-colors"
             />
           </>
         )}
@@ -56,14 +56,14 @@ export default function Navbar({ searchQuery, setSearchQuery }) {
 
         <Link 
           to="/about"
-          className="flex items-center gap-1 text-slate-500 dark:text-vault-muted hover:text-sky-500 dark:hover:text-vault-gold text-sm font-mono transition-colors border-l border-slate-200 dark:border-vault-border pl-4"
+          className="flex items-center gap-1 text-slate-500 dark:text-vault-muted hover:text-purple-500 dark:hover:text-vault-gold text-sm font-mono transition-colors border-l border-slate-200 dark:border-vault-border pl-4"
         >
           <Info size={14} /> About
         </Link>
         
         <button
           onClick={handleLogout}
-          className="flex items-center gap-2 bg-slate-100 dark:bg-vault-border text-slate-800 dark:text-vault-text px-3 py-1.5 rounded hover:bg-sky-500 dark:hover:bg-vault-gold hover:text-white dark:hover:text-vault-bg transition-colors text-sm font-mono"
+          className="flex items-center gap-2 bg-slate-100 dark:bg-vault-border text-slate-800 dark:text-vault-text px-3 py-1.5 rounded hover:bg-purple-500 dark:hover:bg-vault-gold hover:text-white dark:hover:text-vault-bg transition-colors text-sm font-mono"
         >
           <LogOut size={14} /> Logout
         </button>
