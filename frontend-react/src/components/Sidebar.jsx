@@ -83,7 +83,7 @@ export default function Sidebar({ onUploadSuccess }) {
         <button
           onClick={handleUpload}
           disabled={uploading || !files.length}
-          className="w-full bg-purple-500 dark:bg-vault-gold text-white dark:text-vault-bg font-mono font-bold py-2 rounded hover:bg-sky-600 dark:hover:bg-vault-goldHover transition-colors disabled:opacity-40"
+          className="w-full bg-purple-500 dark:bg-vault-gold text-white dark:text-vault-bg font-mono font-bold py-2 rounded hover:bg-purple-600 dark:hover:bg-vault-goldHover transition-colors disabled:opacity-40"
         >
           {uploading ? "Analyzing & Sorting..." : "Upload"}
         </button>

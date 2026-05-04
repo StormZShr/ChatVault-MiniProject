@@ -1,7 +1,10 @@
 import { Trash2, Download } from "lucide-react";
 import client from "../api/client";
+import { useAuth } from "../context/AuthContext";
 
 export default function MediaCard({ item, onDelete }) {
+  const { username } = useAuth();
+
   const isVideo = ["mp4", "mov", "avi"].some(ext =>
     item.filename.toLowerCase().endsWith(ext)
   );
@@ -18,6 +21,8 @@ export default function MediaCard({ item, onDelete }) {
   };
 
   const handleDelete = async () => {
+    if (username !== item.uploader) return; 
+    
     await client.delete(`/media/${item.id}`);
     onDelete(item.id);
   };
@@ -48,12 +53,16 @@ export default function MediaCard({ item, onDelete }) {
           >
             <Download size={12} /> Download
           </button>
-          <button
-            onClick={handleDelete}
-            className="flex items-center justify-center px-2 bg-slate-100 dark:bg-vault-border text-red-500 dark:text-red-400 rounded hover:bg-red-50 dark:hover:bg-red-900 transition-colors"
-          >
-            <Trash2 size={12} />
-          </button>
+          
+          {username === item.uploader && (
+            <button
+              onClick={handleDelete}
+              className="flex items-center justify-center px-2 bg-slate-100 dark:bg-vault-border text-red-500 dark:text-red-400 rounded hover:bg-red-50 dark:hover:bg-red-900 transition-colors"
+              title="Delete your file"
+            >
+              <Trash2 size={12} />
+            </button>
+          )}
         </div>
       </div>
     </div>

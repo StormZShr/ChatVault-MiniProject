@@ -18,7 +18,7 @@ export default function Navbar({ searchQuery, setSearchQuery }) {
       
       <div className="w-64 shrink-0"> 
         <Link to="/">
-          <h1 className="font-display text-2xl text-purple-500 dark:text-vault-gold hover:text-sky-600 dark:hover:text-vault-goldHover transition-colors">🗄️ ChatVault</h1>
+          <h1 className="font-display text-2xl text-purple-500 dark:text-vault-gold hover:text-purple-600 dark:hover:text-vault-goldHover transition-colors">🗄️ ChatVault</h1>
         </Link>
         <p className="text-slate-500 dark:text-vault-muted text-xs font-mono">Your class media, organised.</p>
       </div>
