@@ -46,7 +46,6 @@ export default function MediaGrid({ refreshTrigger, searchQuery }) {
 
   return (
     <div className="flex-1 p-6">
-      {/* Tabs */}
       <div className="flex gap-1 mb-6 border-b border-slate-200 dark:border-vault-border transition-colors">
         {CATEGORIES.map(cat => (
           <button
@@ -63,7 +62,6 @@ export default function MediaGrid({ refreshTrigger, searchQuery }) {
         ))}
       </div>
 
-      {/* Grid */}
       {loading ? (
         <p className="text-slate-500 dark:text-vault-muted font-mono text-sm">Loading...</p>
       ) : filtered.length === 0 ? (

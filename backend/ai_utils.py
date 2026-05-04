@@ -6,13 +6,9 @@ from dotenv import load_dotenv
 
 load_dotenv(dotenv_path="../.env")
 
-# Initialize the new client
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
 def categorize_image(file_bytes: bytes) -> str:
-    """
-    Analyzes an image and returns 'notes', 'information', or 'funny'.
-    """
     try:
         image = Image.open(io.BytesIO(file_bytes))
         
@@ -24,8 +20,6 @@ def categorize_image(file_bytes: bytes) -> str:
         
         Respond with exactly ONE word from the list above. No punctuation, no explanation.
         """
-        
-        # New SDK syntax using the updated model
         response = client.models.generate_content(
             model='gemini-2.5-flash',
             contents=[prompt, image]

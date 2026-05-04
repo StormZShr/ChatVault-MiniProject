@@ -25,7 +25,6 @@ export default function MediaCard({ item, onDelete }) {
   return (
     <div className="bg-white dark:bg-vault-surface border border-slate-200 dark:border-vault-border rounded-lg overflow-hidden hover:border-purple-500 dark:hover:border-vault-gold transition-colors group shadow-sm dark:shadow-none">
 
-      {/* Media Preview */}
       <div className="aspect-square bg-slate-50 dark:bg-vault-bg flex items-center justify-center overflow-hidden transition-colors">
         {isVideo ? (
           <video src={item.media_url} controls className="w-full h-full object-cover" />
@@ -34,7 +33,6 @@ export default function MediaCard({ item, onDelete }) {
         )}
       </div>
 
-      {/* Info */}
       <div className="p-3">
         <p className="text-slate-800 dark:text-vault-text text-xs font-mono truncate transition-colors" title={item.filename}>
           📁 {item.filename}
@@ -43,7 +41,6 @@ export default function MediaCard({ item, onDelete }) {
           👤 {item.uploader}
         </p>
 
-        {/* Actions */}
         <div className="flex gap-2 mt-3">
           <button
             onClick={handleDownload}

@@ -51,7 +51,6 @@ export default function Sidebar({ onUploadSuccess }) {
           Upload Media
         </h2>
 
-        {/* Dropzone */}
         <div
           {...getRootProps()}
           className={`border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-colors mb-4
@@ -71,7 +70,6 @@ export default function Sidebar({ onUploadSuccess }) {
           )}
         </div>
 
-        {/* Selected files list */}
         {files.length > 0 && (
           <ul className="mb-4 space-y-1">
             {files.map(f => (
@@ -82,7 +80,6 @@ export default function Sidebar({ onUploadSuccess }) {
           </ul>
         )}
 
-        {/* Upload button */}
         <button
           onClick={handleUpload}
           disabled={uploading || !files.length}
@@ -91,7 +88,6 @@ export default function Sidebar({ onUploadSuccess }) {
           {uploading ? "Analyzing & Sorting..." : "Upload"}
         </button>
 
-        {/* Message */}
         {message && (
           <p className={`text-xs font-mono mt-3 ${message.type === "success" ? "text-green-500 dark:text-green-400" : "text-red-500 dark:text-red-400"}`}>
             {message.text}

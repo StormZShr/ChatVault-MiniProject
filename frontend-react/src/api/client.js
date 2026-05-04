@@ -4,7 +4,6 @@ const client = axios.create({
   baseURL: "http://localhost:8000",
 });
 
-// automatically attach token to every request
 client.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
