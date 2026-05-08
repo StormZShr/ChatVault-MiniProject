@@ -51,7 +51,6 @@ def get_media(category: str, db: Session = Depends(get_db)):
 @app.post("/upload")
 async def upload_media(
     files: List[UploadFile] = File(...),
-    # DELETED: category: str = Form(...)
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db)
 ):
@@ -61,15 +60,12 @@ async def upload_media(
         
         if len(contents) > MAX_FILE_SIZE:
             raise HTTPException(status_code=400, detail=f"{file.filename} exceeds 10MB limit")
-            
-        # --- The AI Integration ---
-        # Only run AI on images. If someone uploads a video, default to 'funny' (or a new category if you prefer)
+
         if file.content_type and file.content_type.startswith('image/'):
             auto_category = categorize_image(contents)
         else:
             auto_category = "funny" 
             
-        # Upload to ImageKit using the AI-detected category
         url, file_id = upload_file(contents, file.filename, auto_category)
         
         record = Media(
@@ -78,7 +74,7 @@ async def upload_media(
             media_url=url,
             file_id=file_id,
             uploader=current_user.username,
-            uploader_id=current_user.id # Assuming you added this earlier
+            uploader_id=current_user.id
         )
         db.add(record)
         db.commit()
